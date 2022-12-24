@@ -6,10 +6,13 @@ function QuestCard({ quest }) {
 
   return (
     <div>
-      <div onClick={() => setExtended(!extended)} style={{ cursor: "pointer" }}>
+      <div
+        onClick={() => setExtended(!extended)}
+        style={{ cursor: "pointer", display: "flex", gap: "10px" }}
+      >
         <h2>{quest.goal}</h2>
         <span>{quest.difficulty}</span>
-        <span>{quest.dueDate}</span>
+        {quest.dueDate && <span>Fecha límite: {quest.dueDate}</span>}
       </div>
       {extended && <QuestDetails quest={quest} />}
     </div>

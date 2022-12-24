@@ -5,9 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,8 +25,9 @@ public class Quest extends GenericEntity {
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "due_date")
-    private Date dueDate;
+    private LocalDate dueDate;
 
     private boolean completed;
 
