@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import QuestsList from "../components/QuestsList";
+import QuestsList from "../components/quests/QuestsList";
 import { findAllQuests } from "../services/questsService";
 
 function Quests() {

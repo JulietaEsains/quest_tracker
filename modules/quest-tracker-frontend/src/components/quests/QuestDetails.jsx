@@ -1,9 +1,7 @@
-function QuestCard({ quest }) {
+function QuestDetails({ quest }) {
   return (
     <div>
-      <h2>{quest.goal}</h2>
       <p>{quest.description}</p>
-      <div>Dificultad: {quest.difficulty}</div>
       <div>Historia: {quest.story.name}</div>
       <h4>Habilidades que involucra</h4>
       <ul>
@@ -20,4 +18,4 @@ function QuestCard({ quest }) {
   );
 }
 
-export default QuestCard;
+export default QuestDetails;
