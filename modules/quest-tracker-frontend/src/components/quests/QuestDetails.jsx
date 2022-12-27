@@ -5,6 +5,11 @@ function QuestDetails({ quest }) {
       <h3 className="font-semibold">
         Historia: <span className="font-normal">{quest.story.name}</span>
       </h3>
+      <h3 className="font-semibold">
+        Dificultad:{" "}
+        <span className="font-normal">{quest.difficulty.toLowerCase()}</span>
+      </h3>
+
       <h3 className="font-semibold">Habilidades que involucra:</h3>
       <ul className="my-3">
         {quest.skills.map((skill) => (

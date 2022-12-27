@@ -9,3 +9,12 @@ export const findAllQuests = async () => {
     console.log(error);
   }
 };
+
+export const deleteQuest = async (questId) => {
+  try {
+    await axios.delete(`${environment.backendUrl}/quests/${questId}`);
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
