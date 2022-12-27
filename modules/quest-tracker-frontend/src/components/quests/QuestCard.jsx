@@ -5,14 +5,18 @@ function QuestCard({ quest }) {
   const [extended, setExtended] = useState(false);
 
   return (
-    <div>
+    <div className="shadow border-t border-gray-200 rounded my-5 p-3 mx-3">
       <div
+        className="flex justify-between cursor-pointer"
         onClick={() => setExtended(!extended)}
-        style={{ cursor: "pointer", display: "flex", gap: "10px" }}
       >
-        <h2>{quest.goal}</h2>
-        <span>{quest.difficulty}</span>
-        {quest.dueDate && <span>Fecha límite: {quest.dueDate}</span>}
+        <h2 className="font-semibold" style={{ color: quest.story.colorCode }}>
+          {quest.goal}
+          {quest.dueDate && (
+            <span className="font-normal"> (fecha límite: {quest.dueDate})</span>
+          )}
+        </h2>
+        <span className="font-semibold text-gray-900">{quest.difficulty}</span>
       </div>
       {extended && <QuestDetails quest={quest} />}
     </div>
