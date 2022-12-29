@@ -1,3 +1,5 @@
+import { BiCoinStack } from "react-icons/bi";
+
 function QuestDetails({ quest }) {
   return (
     <div>
@@ -24,8 +26,14 @@ function QuestDetails({ quest }) {
       </ul>
       <h3 className="font-semibold">Recompensas:</h3>
       <ul className="list-disc ml-10">
-        <li>{quest.gold} monedas de oro.</li>
-        <li>{quest.experience} XP.</li>
+        <li>
+          {quest.gold} monedas de oro{" "}
+          <BiCoinStack className="inline text-yellow-400 font-semibold text-lg" />
+        </li>
+        <li>
+          {quest.experience}{" "}
+          <span className="text-emerald-500 font-semibold">XP</span>
+        </li>
       </ul>
     </div>
   );

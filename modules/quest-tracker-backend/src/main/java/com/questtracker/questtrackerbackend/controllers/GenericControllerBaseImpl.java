@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 public abstract class GenericControllerBaseImpl<E extends GenericEntity, S extends GenericService<E>> implements GenericController<E>{
 
-    private S service;
+    protected S service;
 
     public GenericControllerBaseImpl(S service) {
         this.service = service;
