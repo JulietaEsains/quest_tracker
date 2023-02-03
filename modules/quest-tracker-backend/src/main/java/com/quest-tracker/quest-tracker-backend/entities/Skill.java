@@ -9,21 +9,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table (name = "users")
+@Table(name = "skills")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends GenericEntity {
+public class Skill extends com.questtracker.questtrackerbackend.entities.GenericEntity {
     private String name;
 
     private Long level;
 
-    @Column(name = "current_experience")
-    private Long currentExperience;
+    @Column(name = "color_code")
+    private String colorCode;
 
-    @Column(name = "experience_for_next_level")
-    private Long experienceForNextLevel;
-
-    private Long gold;
+    private Long experience;
 }

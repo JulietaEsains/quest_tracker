@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("users")
-public class UserController extends GenericControllerBaseImpl<User, UserService> {
+public class UserController extends com.questtracker.questtrackerbackend.controllers.GenericControllerBaseImpl<User, UserService> {
 
     public UserController(UserService service) {
         super(service);

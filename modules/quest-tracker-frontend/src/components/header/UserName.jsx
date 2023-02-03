@@ -14,18 +14,12 @@ function UserName({ user }) {
 
   const handleNameChange = () => {
     updateUser({
-      id: user.id,
-      level: user.level,
-      currentExperience: user.currentExperience,
-      experienceForNextLevel: user.experienceForNextLevel,
-      gold: user.gold,
+      ...user,
       name: userName,
     })
-      .then((data) => {
-        console.log(data);
-      })
+      .then()
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 

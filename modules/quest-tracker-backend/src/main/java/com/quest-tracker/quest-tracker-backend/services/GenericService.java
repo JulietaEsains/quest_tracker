@@ -24,18 +24,18 @@ public abstract class GenericService<E extends GenericEntity> implements Generic
     }
 
     @Transactional
-    public void save(E entity) throws Exception {
-        repository.save(entity);
+    public E save(E entity) throws Exception {
+        return repository.save(entity);
     }
 
     @Transactional
-    public void update(Long id, E entity) throws Exception {
+    public E update(Long id, E entity) throws Exception {
         entity.setId(id);
-        repository.save(entity);
+        return repository.save(entity);
     }
 
     @Transactional
-    public void delete(Long id) throws Exception {
+    public void deleteById(Long id) throws Exception {
         var opt = this.repository.findById(id);
         if (opt.isPresent()) {
             repository.delete(opt.get());

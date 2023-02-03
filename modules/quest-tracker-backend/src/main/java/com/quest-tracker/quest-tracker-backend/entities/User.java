@@ -9,18 +9,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "stories")
+@Table (name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Story extends GenericEntity {
+public class User extends com.questtracker.questtrackerbackend.entities.GenericEntity {
     private String name;
 
-    private String description;
+    private Long level;
 
-    @Column(name = "color_code")
-    private String colorCode;
+    @Column(name = "current_experience")
+    private Long currentExperience;
 
-    private Long experience;
+    @Column(name = "experience_for_next_level")
+    private Long experienceForNextLevel;
+
+    private Long gold;
 }

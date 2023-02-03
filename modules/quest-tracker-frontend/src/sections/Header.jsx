@@ -20,7 +20,7 @@ function Header() {
         setUser(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, [user]);
 

@@ -10,7 +10,7 @@ function UserLevel({ user }) {
         setLevelPercentage(data.result);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, [levelPercentage]);
 

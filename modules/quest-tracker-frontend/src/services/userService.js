@@ -6,7 +6,7 @@ export const findUser = async () => {
     const response = await axios.get(`${environment.backendUrl}/users/1`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -18,7 +18,7 @@ export const updateUser = async (newUser) => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -29,6 +29,6 @@ export const findLevelPercentage = async () => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

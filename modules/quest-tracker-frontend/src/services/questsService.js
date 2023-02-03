@@ -6,15 +6,14 @@ export const findAllQuests = async () => {
     const response = await axios.get(`${environment.backendUrl}/quests`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
 export const deleteQuest = async (questId) => {
   try {
     await axios.delete(`${environment.backendUrl}/quests/${questId}`);
-    console.log(response.data);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

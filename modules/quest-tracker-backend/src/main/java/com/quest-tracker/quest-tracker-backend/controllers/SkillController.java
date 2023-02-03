@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("skills")
-public class SkillController extends GenericControllerBaseImpl<Skill, SkillService> {
+public class SkillController extends com.questtracker.questtrackerbackend.controllers.GenericControllerBaseImpl<Skill, SkillService> {
     public SkillController(SkillService service) {
         super(service);
     }

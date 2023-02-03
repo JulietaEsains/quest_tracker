@@ -17,13 +17,13 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Quest extends GenericEntity {
+public class Quest extends com.questtracker.questtrackerbackend.entities.GenericEntity {
     private String goal;
 
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private Difficulty difficulty;
+    private com.questtracker.questtrackerbackend.entities.Difficulty difficulty;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "due_date")
@@ -37,11 +37,11 @@ public class Quest extends GenericEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_user", nullable = false)
-    private User user;
+    private com.questtracker.questtrackerbackend.entities.User user;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_story", nullable = false)
-    private Story story;
+    private com.questtracker.questtrackerbackend.entities.Story story;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
@@ -49,5 +49,5 @@ public class Quest extends GenericEntity {
             joinColumns = @JoinColumn(name = "quest_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    private List<Skill> skills = new ArrayList<Skill>();
+    private List<com.questtracker.questtrackerbackend.entities.Skill> skills = new ArrayList<com.questtracker.questtrackerbackend.entities.Skill>();
 }

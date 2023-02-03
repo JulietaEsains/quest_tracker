@@ -8,7 +8,7 @@ function Quests() {
   useEffect(() => {
     findAllQuests()
       .then((data) => setQuests(data))
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, [quests]);
 
   return (
