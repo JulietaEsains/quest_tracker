@@ -3,7 +3,7 @@ import { deleteQuest } from "../../services/questsService";
 import QuestDetails from "./QuestDetails";
 import DeleteButton from "../common/buttons/DeleteButton";
 
-function QuestCard({ quest }) {
+function QuestCard({ quest, refreshQuests }) {
   const [extended, setExtended] = useState(false);
 
   const handleQuestDeletion = () => {
@@ -12,7 +12,9 @@ function QuestCard({ quest }) {
         `¿Estás seguro/a de que quieres borrar esta misión (${quest.goal})?`
       )
     ) {
-      deleteQuest(quest.id);
+      deleteQuest(quest.id)
+        .then((data) => refreshQuests())
+        .catch((error) => console.error(error));
     }
   };
 

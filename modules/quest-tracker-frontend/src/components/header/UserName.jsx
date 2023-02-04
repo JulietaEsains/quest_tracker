@@ -3,21 +3,21 @@ import { updateUser } from "../../services/userService";
 import EditButton from "../common/buttons/EditButton";
 import ConfirmButton from "../common/buttons/ConfirmButton";
 
-function UserName({ user }) {
+function UserName({ user, refreshUser }) {
   const [nameInputVisibility, setNameInputVisibility] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [newUserName, setNewUserName] = useState("");
 
   const handleNameEdition = () => {
     setNameInputVisibility(!nameInputVisibility);
-    setUserName(user.name);
+    setNewUserName(user.name);
   };
 
   const handleNameChange = () => {
     updateUser({
       ...user,
-      name: userName,
+      name: newUserName,
     })
-      .then()
+      .then((data) => refreshUser())
       .catch((error) => {
         console.error(error);
       });
@@ -33,8 +33,8 @@ function UserName({ user }) {
         <div className="flex gap-2 mt-2">
           <input
             className="border border-x-gray-300 rounded"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={newUserName}
+            onChange={(e) => setNewUserName(e.target.value)}
           />
           <ConfirmButton handleConfirmation={handleNameChange} />
         </div>

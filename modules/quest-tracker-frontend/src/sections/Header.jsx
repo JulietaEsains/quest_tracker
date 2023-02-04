@@ -14,7 +14,7 @@ function Header() {
     gold: 0,
   });
 
-  useEffect(() => {
+  const findUserData = () => {
     findUser()
       .then((data) => {
         setUser(data);
@@ -22,13 +22,17 @@ function Header() {
       .catch((error) => {
         console.error(error);
       });
-  }, [user]);
+  };
+
+  useEffect(() => {
+    findUserData();
+  }, []);
 
   return (
     <nav className="bg-indigo-50 sticky p-5 font-semibold">
       <div className="flex justify-between">
-        <UserName user={user} />
-        <UserLevel user={user} />
+        <UserName user={user} refreshUser={findUserData} />
+        <UserLevel user={user} refreshUser={findUserData} />
         <div>
           Monedas de oro:{" "}
           <span className="text-yellow-400 text-xl">
