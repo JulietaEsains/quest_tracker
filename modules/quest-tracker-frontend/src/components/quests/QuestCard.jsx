@@ -1,10 +1,25 @@
-import { useState } from "react";
-import { deleteQuest } from "../../services/questsService";
+import { Tooltip, Button } from "@material-tailwind/react";
+import { useState, useEffect } from "react";
+import {
+  deleteQuest,
+  findFormattedDueDate,
+} from "../../services/questsService";
 import QuestDetails from "./QuestDetails";
 import DeleteButton from "../common/buttons/DeleteButton";
 
 function QuestCard({ quest, refreshQuests }) {
   const [extended, setExtended] = useState(false);
+  const [dueDate, setDueDate] = useState("");
+
+  useEffect(() => {
+    findFormattedDueDate(quest.id)
+      .then((data) => {
+        setDueDate(data.result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [dueDate]);
 
   const handleQuestDeletion = () => {
     if (
@@ -19,8 +34,8 @@ function QuestCard({ quest, refreshQuests }) {
   };
 
   return (
-    <div className="flex">
-      <div className="shadow border-t border-gray-200 rounded my-5 p-3 mx-3 w-11/12">
+    <div>
+      <div className="shadow border-t border-gray-200 rounded my-5 p-3 mx-5">
         <div
           className="flex justify-between cursor-pointer"
           onClick={() => setExtended(!extended)}
@@ -31,14 +46,23 @@ function QuestCard({ quest, refreshQuests }) {
           >
             {quest.goal}
           </h2>
-          {quest.dueDate && (
-            <span className="font-normal"> fecha límite: {quest.dueDate}</span>
-          )}
+
+          <div className="flex gap-3 align-middle">
+            {quest.dueDate && (
+              <span className="font-normal"> fecha límite: {dueDate}</span>
+            )}
+            <Tooltip
+              content="Borrar"
+              placement="bottom"
+              className="bg-gray-800 text-white p-1 rounded-md"
+            >
+              <Button className="mt-1 text-gray-800">
+                <DeleteButton handleDeletion={handleQuestDeletion} />
+              </Button>
+            </Tooltip>
+          </div>
         </div>
         {extended && <QuestDetails quest={quest} />}
-      </div>
-      <div className="w-1/12 flex align-middle">
-        <DeleteButton handleDeletion={handleQuestDeletion} />
       </div>
     </div>
   );

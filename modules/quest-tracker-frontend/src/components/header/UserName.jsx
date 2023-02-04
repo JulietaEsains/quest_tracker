@@ -1,3 +1,4 @@
+import { Tooltip, Button } from "@material-tailwind/react";
 import { useState } from "react";
 import { updateUser } from "../../services/userService";
 import EditButton from "../common/buttons/EditButton";
@@ -27,7 +28,15 @@ function UserName({ user, refreshUser }) {
     <div className="w-1/6">
       <div className="flex gap-2">
         <h1 className="font-semibold text-xl">{user.name}</h1>
-        <EditButton handleEdition={handleNameEdition} />
+        <Tooltip
+          content="Cambiar nombre"
+          placement="right"
+          className="bg-gray-800 text-white p-1 rounded-md"
+        >
+          <Button className="mt-1 text-gray-800">
+            <EditButton handleEdition={handleNameEdition} />
+          </Button>
+        </Tooltip>
       </div>
       {nameInputVisibility && (
         <div className="flex gap-2 mt-2">
@@ -36,7 +45,15 @@ function UserName({ user, refreshUser }) {
             value={newUserName}
             onChange={(e) => setNewUserName(e.target.value)}
           />
-          <ConfirmButton handleConfirmation={handleNameChange} />
+          <Tooltip
+            content="Confirmar"
+            placement="right"
+            className="bg-gray-800 text-white p-1 rounded-md"
+          >
+            <Button className="mt-1 text-gray-800">
+              <ConfirmButton handleConfirmation={handleNameChange} />
+            </Button>
+          </Tooltip>
         </div>
       )}
     </div>

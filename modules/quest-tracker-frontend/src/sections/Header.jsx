@@ -29,7 +29,7 @@ function Header() {
   }, []);
 
   return (
-    <nav className="bg-indigo-50 sticky p-5 font-semibold">
+    <nav className="bg-cyan-50 sticky p-5 font-semibold">
       <div className="flex justify-between">
         <UserName user={user} refreshUser={findUserData} />
         <UserLevel user={user} refreshUser={findUserData} />
