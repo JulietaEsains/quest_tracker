@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @Service
 public class QuestService extends GenericService<Quest> implements QuestTransactionalService {
@@ -38,5 +40,12 @@ public class QuestService extends GenericService<Quest> implements QuestTransact
         }
 
         return repository.save(quest);
+    }
+
+    @Transactional
+    public String findFormattedDate(Long id) throws Exception {
+        var opt = this.repository.findById(id);
+        Quest quest = opt.get();
+        return quest.getDueDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
 }
