@@ -13,18 +13,20 @@ function QuestDetails({ quest, extended }) {
         <span className="font-normal">{quest.difficulty.toLowerCase()}</span>
       </h3>
 
-      <h3 className="font-semibold">Habilidades que involucra:</h3>
-      <ul className="my-3">
-        {quest.skills.map((skill) => (
-          <li
-            key={skill.id}
-            style={{ background: skill.colorCode }}
-            className="p-2 text-white inline mr-3 rounded-full text-sm"
-          >
-            {skill.name}
-          </li>
-        ))}
-      </ul>
+      <div className="flex gap-2 items-center">
+        <h3 className="font-semibold">Habilidades que involucra:</h3>
+        <ul>
+          {quest.skills.map((skill) => (
+            <li
+              key={skill.id}
+              style={{ background: skill.colorCode }}
+              className="p-2 text-white inline mr-3 rounded-full text-xs font-semibold"
+            >
+              {skill.name}
+            </li>
+          ))}
+        </ul>
+      </div>
       <h3 className="font-semibold">Recompensas:</h3>
       <ul className="list-disc ml-10">
         <li>
