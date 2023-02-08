@@ -1,0 +1,20 @@
+.closed-details {
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+  animation: shrink 0.3s;
+}
+
+.open-details {
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
+}
+
+@keyframes shrink {
+  0% {
+    max-height: 50vh;
+  }
+  100% {
+    max-height: 0;
+  }
+}

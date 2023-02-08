@@ -1,8 +1,9 @@
 import { BiCoinStack } from "react-icons/bi";
+import "../../assets/styles/customStyles.css";
 
-function QuestDetails({ quest }) {
+function QuestDetails({ quest, extended }) {
   return (
-    <div>
+    <div className={extended ? "open-details" : "closed-details"}>
       <p className="my-2">{quest.description}</p>
       <h3 className="font-semibold">
         Historia: <span className="font-normal">{quest.story.name}</span>

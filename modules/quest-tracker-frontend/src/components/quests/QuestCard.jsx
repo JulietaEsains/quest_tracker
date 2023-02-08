@@ -62,7 +62,7 @@ function QuestCard({ quest, refreshQuests }) {
             </Tooltip>
           </div>
         </div>
-        {extended && <QuestDetails quest={quest} />}
+        <QuestDetails quest={quest} extended={extended} />
       </div>
     </div>
   );
