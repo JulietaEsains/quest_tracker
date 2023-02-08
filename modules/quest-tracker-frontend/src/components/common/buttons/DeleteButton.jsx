@@ -1,9 +1,9 @@
 import { AiOutlineDelete } from "react-icons/ai";
 
-function DeleteButton({ handleDeletion }) {
+function DeleteButton({ onDelete }) {
   return (
-    <button className="hover:text-red-400" onClick={handleDeletion}>
-      <AiOutlineDelete />
+    <button className="hover:text-red-400" onClick={onDelete}>
+      <AiOutlineDelete size={15} />
     </button>
   );
 }

@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
+import {
+  findAllPendingQuests,
+  findAllCompletedQuests,
+} from "../services/questsService";
 import QuestsList from "../components/quests/QuestsList";
-import { findAllQuests } from "../services/questsService";
 
-function Quests() {
-  const [quests, setQuests] = useState([]);
+function Quests({ refreshUser }) {
+  const [pendingQuests, setPendingQuests] = useState([]);
+  const [completedQuests, setCompletedQuests] = useState([]);
 
   const findQuests = () => {
-    findAllQuests()
+    findAllPendingQuests()
       .then((data) => {
-        setQuests(data);
+        setPendingQuests(data);
+      })
+      .catch((error) => console.error(error));
+    findAllCompletedQuests()
+      .then((data) => {
+        setCompletedQuests(data);
       })
       .catch((error) => console.error(error));
   };
@@ -19,10 +28,23 @@ function Quests() {
 
   return (
     <>
-      <h1 className="font-semibold text-4xl my-5 text-center text-gray-800">
+      <h1 className="font-semibold text-4xl my-5 text-center text-gray-900">
         Misiones
       </h1>
-      <QuestsList quests={quests} refreshQuests={findQuests} />
+      <p className="ml-5">Haz click en una misión para ver más detalles.</p>
+      <QuestsList
+        quests={pendingQuests}
+        refreshQuests={findQuests}
+        refreshUser={refreshUser}
+      />
+      <h2 className="font-semibold text-xl ml-5 text-gray-900">
+        Misiones completadas
+      </h2>
+      <QuestsList
+        quests={completedQuests}
+        refreshQuests={findQuests}
+        refreshUser={refreshUser}
+      />
     </>
   );
 }

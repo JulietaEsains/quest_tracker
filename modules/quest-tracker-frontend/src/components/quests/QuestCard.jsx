@@ -1,13 +1,14 @@
-import { Tooltip, Button } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
 import {
+  completeQuest,
   deleteQuest,
   findFormattedDueDate,
 } from "../../services/questsService";
+import QuestButtons from "./QuestButtons";
 import QuestDetails from "./QuestDetails";
-import DeleteButton from "../common/buttons/DeleteButton";
+import "../../assets/styles/customStyles.css";
 
-function QuestCard({ quest, refreshQuests }) {
+function QuestCard({ quest, refreshQuests, refreshUser }) {
   const [extended, setExtended] = useState(false);
   const [dueDate, setDueDate] = useState("");
 
@@ -20,6 +21,18 @@ function QuestCard({ quest, refreshQuests }) {
         console.error(error);
       });
   }, [dueDate]);
+
+  const handleQuestCompletion = () => {
+    completeQuest(quest.id)
+      .then((data) => {
+        alert(
+          `¡Misión '${data.goal}' completada! Ahora tienes más oro, más experiencia y has progresado en algunas habilidades.`
+        );
+        refreshQuests();
+        refreshUser();
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleQuestDeletion = () => {
     if (
@@ -34,15 +47,13 @@ function QuestCard({ quest, refreshQuests }) {
   };
 
   return (
-    <div>
+    <div className={quest.completed ? "bg-gray-50" : "bg-white"}>
       <div className="shadow border-t border-gray-200 rounded my-5 p-3 mx-5">
-        <div
-          className="flex justify-between cursor-pointer"
-          onClick={() => setExtended(!extended)}
-        >
+        <div className="flex justify-between">
           <h2
-            className="font-semibold"
+            className="font-semibold cursor-pointer quest-title"
             style={{ color: quest.story.colorCode }}
+            onClick={() => setExtended(!extended)}
           >
             {quest.goal}
           </h2>
@@ -51,15 +62,11 @@ function QuestCard({ quest, refreshQuests }) {
             {quest.dueDate && (
               <span className="font-normal"> fecha límite: {dueDate}</span>
             )}
-            <Tooltip
-              content="Borrar"
-              placement="bottom"
-              className="bg-gray-800 text-white p-1 rounded-md"
-            >
-              <Button className="mt-1 text-gray-800">
-                <DeleteButton handleDeletion={handleQuestDeletion} />
-              </Button>
-            </Tooltip>
+            <QuestButtons
+              quest={quest}
+              onCompleteQuest={handleQuestCompletion}
+              onDeleteQuest={handleQuestDeletion}
+            />
           </div>
         </div>
         <QuestDetails quest={quest} extended={extended} />

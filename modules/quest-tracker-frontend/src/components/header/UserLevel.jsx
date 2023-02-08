@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { findLevelPercentage } from "../../services/userService";
 
-function UserLevel({ user }) {
+function UserLevel({ user, refreshUser }) {
   const [levelPercentage, setLevelPercentage] = useState(0);
 
   useEffect(() => {
     findLevelPercentage()
       .then((data) => {
         setLevelPercentage(data.result);
+        refreshUser();
       })
       .catch((error) => {
         console.error(error);

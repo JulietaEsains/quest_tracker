@@ -18,7 +18,10 @@ function UserName({ user, refreshUser }) {
       ...user,
       name: newUserName,
     })
-      .then((data) => refreshUser())
+      .then((data) => {
+        refreshUser();
+        setNameInputVisibility(false);
+      })
       .catch((error) => {
         console.error(error);
       });
@@ -34,7 +37,7 @@ function UserName({ user, refreshUser }) {
           className="bg-gray-800 text-white p-1 rounded-md"
         >
           <Button className="mt-1 text-gray-800">
-            <EditButton handleEdition={handleNameEdition} />
+            <EditButton onEdit={handleNameEdition} />
           </Button>
         </Tooltip>
       </div>
@@ -51,7 +54,7 @@ function UserName({ user, refreshUser }) {
             className="bg-gray-800 text-white p-1 rounded-md"
           >
             <Button className="mt-1 text-gray-800">
-              <ConfirmButton handleConfirmation={handleNameChange} />
+              <ConfirmButton onConfirm={handleNameChange} />
             </Button>
           </Tooltip>
         </div>

@@ -1,3 +1,11 @@
+.quest-title {
+  transition: transform 0.3s;
+}
+
+.quest-title:hover {
+  transform: translateX(5px);
+}
+
 .closed-details {
   max-height: 0;
   transition: max-height 0.15s ease-out;

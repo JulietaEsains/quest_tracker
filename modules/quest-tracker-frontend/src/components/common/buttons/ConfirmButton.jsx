@@ -1,11 +1,8 @@
 import { BiCheck } from "react-icons/bi";
 
-function ConfirmButton({ handleConfirmation }) {
+function ConfirmButton({ onConfirm }) {
   return (
-    <button
-      className="text-lg hover:text-green-400"
-      onClick={handleConfirmation}
-    >
+    <button className="text-lg hover:text-green-400" onClick={onConfirm}>
       <BiCheck />
     </button>
   );
