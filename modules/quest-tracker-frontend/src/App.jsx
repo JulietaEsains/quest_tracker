@@ -5,6 +5,7 @@ import Quests from "./sections/Quests";
 import Stories from "./sections/Stories";
 import Header from "./sections/Header";
 import Menu from "./sections/Menu";
+import "./assets/styles/customStyles.css";
 
 function App() {
   const [user, setUser] = useState({
@@ -33,7 +34,7 @@ function App() {
   return (
     <>
       <Header user={user} refreshUser={findUserData} />
-      <div className="flex">
+      <div className="flex main">
         <BrowserRouter>
           <Menu />
           <Routes>

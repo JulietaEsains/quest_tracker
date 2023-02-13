@@ -37,9 +37,7 @@ function Quests({ refreshUser }) {
         refreshQuests={findQuests}
         refreshUser={refreshUser}
       />
-      <h2 className="font-semibold text-xl ml-5 text-gray-900">
-        Misiones completadas
-      </h2>
+      <h2 className="font-semibold text-xl ml-5 text-gray-900">Completadas</h2>
       <QuestsList
         quests={completedQuests}
         refreshQuests={findQuests}

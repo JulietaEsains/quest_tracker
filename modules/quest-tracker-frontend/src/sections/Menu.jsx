@@ -3,7 +3,7 @@ import "../assets/styles/customStyles.css";
 
 function Menu() {
   return (
-    <div className="w-1/12 bg-emerald-50 menu shadow-sm">
+    <div className="w-1/12 bg-emerald-50 shadow-sm fixed menu">
       <ul className="m-2 font-semibold text-lg">
         <li className="menu-item">
           <Link to="/">Misiones</Link>
