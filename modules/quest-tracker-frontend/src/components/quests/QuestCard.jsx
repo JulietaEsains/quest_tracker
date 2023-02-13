@@ -47,11 +47,14 @@ function QuestCard({ quest, refreshQuests, refreshUser }) {
   };
 
   return (
-    <div className={quest.completed ? "bg-gray-50" : "bg-white"}>
-      <div className="shadow border-t border-gray-200 rounded my-5 p-3 mx-5">
+    <div>
+      <div
+        className="shadow border-t border-gray-200 rounded my-5 p-3 mx-5"
+        style={{ backgroundColor: quest.completed ? "#fcfcfc" : "#fff" }}
+      >
         <div className="flex justify-between">
           <h2
-            className="font-semibold cursor-pointer quest-title"
+            className="font-semibold cursor-pointer card-title"
             style={{ color: quest.story.colorCode }}
             onClick={() => setExtended(!extended)}
           >

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { findUser } from "./services/userService";
 import Quests from "./sections/Quests";
+import Stories from "./sections/Stories";
 import Header from "./sections/Header";
+import Menu from "./sections/Menu";
 
 function App() {
   const [user, setUser] = useState({
@@ -30,7 +33,15 @@ function App() {
   return (
     <>
       <Header user={user} refreshUser={findUserData} />
-      <Quests refreshUser={findUserData} />
+      <div className="flex">
+        <BrowserRouter>
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Quests refreshUser={findUserData} />} />
+            <Route path="/stories" element={<Stories />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
 }

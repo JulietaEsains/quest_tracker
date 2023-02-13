@@ -27,7 +27,7 @@ function Quests({ refreshUser }) {
   }, []);
 
   return (
-    <>
+    <div className="w-11/12 section">
       <h1 className="font-semibold text-4xl my-5 text-center text-gray-900">
         Misiones
       </h1>
@@ -45,7 +45,7 @@ function Quests({ refreshUser }) {
         refreshQuests={findQuests}
         refreshUser={refreshUser}
       />
-    </>
+    </div>
   );
 }
 

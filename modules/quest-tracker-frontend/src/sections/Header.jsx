@@ -4,7 +4,7 @@ import UserLevel from "../components/header/UserLevel";
 
 function Header({ user, refreshUser }) {
   return (
-    <nav className="bg-cyan-50 sticky p-5 font-semibold">
+    <nav className="bg-cyan-50 sticky p-5 font-semibold shadow-sm">
       <div className="flex justify-between">
         <UserName user={user} refreshUser={refreshUser} />
         <UserLevel user={user} refreshUser={refreshUser} />
