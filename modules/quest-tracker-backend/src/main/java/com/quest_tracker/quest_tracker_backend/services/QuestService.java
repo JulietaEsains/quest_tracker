@@ -64,7 +64,7 @@ public class QuestService extends GenericService<Quest> implements QuestTransact
 
     @Transactional
     public List<Quest> findAllPending() throws Exception {
-        return repository.findAllByCompletedFalse();
+        return repository.findAllByPending();
     }
 
     @Transactional
