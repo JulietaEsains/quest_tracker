@@ -17,3 +17,11 @@ export const createStory = async (newStory) => {
     console.error(error);
   }
 };
+
+export const deleteStory = async (storyId) => {
+  try {
+    await axios.delete(`${environment.backendUrl}/stories/${storyId}`);
+  } catch (error) {
+    console.error(error);
+  }
+};

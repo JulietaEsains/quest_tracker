@@ -1,8 +1,22 @@
+import { deleteStory } from "../../services/storiesService";
 import { useState } from "react";
+import StoryButtons from "./StoryButtons";
 import "../../assets/styles/customStyles.css";
 
 function StoryCard({ story, refreshStories }) {
   const [extended, setExtended] = useState(false);
+
+  const handleStoryDeletion = () => {
+    if (
+      confirm(
+        `¿Estás seguro/a de que quieres borrar esta historia (${story.name})?`
+      )
+    ) {
+      deleteStory(story.id)
+        .then((data) => refreshStories())
+        .catch((error) => console.error(error));
+    }
+  };
 
   return (
     <div>
@@ -20,6 +34,7 @@ function StoryCard({ story, refreshStories }) {
             <span className="text-emerald-500 font-semibold">
               {story.experience} XP
             </span>
+            <StoryButtons onDeleteStory={handleStoryDeletion} />
           </div>
         </div>
         <div className={extended ? "open-details" : "closed-details"}>
