@@ -9,3 +9,11 @@ export const findAllStories = async () => {
     console.error(error);
   }
 };
+
+export const createStory = async (newStory) => {
+  try {
+    await axios.post(`${environment.backendUrl}/stories`, newStory);
+  } catch (error) {
+    console.error(error);
+  }
+};

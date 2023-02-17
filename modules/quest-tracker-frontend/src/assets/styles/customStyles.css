@@ -44,3 +44,27 @@
   max-height: 500px;
   transition: max-height 0.25s ease-in;
 }
+
+.btn {
+  transition: background-color 0.25s ease-in-out;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.color-selector {
+  width: 30px;
+  height: 30px;
+}
+
+.color-selector::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 1px solid #222;
+}
+
+.color-selector::-moz-color-swatch {
+  border-radius: 50%;
+  border: 1px solid #222;
+}
