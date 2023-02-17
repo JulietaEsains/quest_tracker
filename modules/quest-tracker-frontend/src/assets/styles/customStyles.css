@@ -25,7 +25,8 @@
 }
 
 .card-title,
-.menu-item {
+.menu-item,
+.completed-quests-title {
   transition: transform 0.3s;
 }
 
@@ -34,13 +35,19 @@
   transform: translateX(5px);
 }
 
-.closed-details {
-  max-height: 0;
-  transition: max-height 0.15s ease-out;
-  overflow: hidden;
+.completed-quests-title:hover {
+  transform: translateY(5px);
 }
 
-.open-details {
+.closed-details,
+.closed-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.15s ease-out;
+}
+
+.open-details,
+.open-list {
   max-height: 500px;
   transition: max-height 0.25s ease-in;
 }

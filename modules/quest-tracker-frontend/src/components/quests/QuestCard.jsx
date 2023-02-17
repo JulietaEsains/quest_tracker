@@ -8,7 +8,7 @@ import QuestButtons from "./QuestButtons";
 import QuestDetails from "./QuestDetails";
 import "../../assets/styles/customStyles.css";
 
-function QuestCard({ quest, refreshQuests, refreshUser }) {
+function QuestCard({ quest, refreshQuests, refreshUser, questShown }) {
   const [extended, setExtended] = useState(false);
   const [dueDate, setDueDate] = useState("");
 
@@ -47,11 +47,8 @@ function QuestCard({ quest, refreshQuests, refreshUser }) {
   };
 
   return (
-    <div>
-      <div
-        className="shadow border-t border-gray-200 rounded my-5 p-3 mx-5"
-        style={{ backgroundColor: quest.completed ? "#fcfcfc" : "#fff" }}
-      >
+    <div className={questShown ? "open-list" : "closed-list"}>
+      <div className="shadow border-t border-gray-200 rounded my-5 p-3 mx-5">
         <div className="flex justify-between">
           <h2
             className="font-semibold cursor-pointer card-title"
