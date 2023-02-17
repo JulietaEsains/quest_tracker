@@ -60,7 +60,17 @@ function QuestCard({ quest, refreshQuests, refreshUser, questShown }) {
 
           <div className="flex gap-3 align-middle">
             {quest.dueDate && (
-              <span className="font-normal"> fecha límite: {dueDate}</span>
+              <span
+                className={
+                  "font-normal " +
+                  (new Date(quest.dueDate) < new Date() && !quest.completed
+                    ? "text-red-500"
+                    : "")
+                }
+              >
+                {" "}
+                fecha límite: {dueDate}
+              </span>
             )}
             <QuestButtons
               quest={quest}
