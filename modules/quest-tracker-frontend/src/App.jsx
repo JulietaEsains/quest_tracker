@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { findUser } from "./services/userService";
-import Quests from "./sections/Quests";
-import Stories from "./sections/Stories";
 import Header from "./sections/Header";
 import Menu from "./sections/Menu";
+import Quests from "./sections/Quests";
+import Stories from "./sections/Stories";
+import Skills from "./sections/Skills";
 import "./assets/styles/customStyles.css";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Quests refreshUser={findUserData} />} />
             <Route path="/stories" element={<Stories />} />
+            <Route path="/skills" element={<Skills />} />
           </Routes>
         </BrowserRouter>
       </div>

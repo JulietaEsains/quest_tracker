@@ -2,7 +2,6 @@ package com.quest_tracker.quest_tracker_backend.services;
 
 import com.quest_tracker.quest_tracker_backend.entities.Quest;
 import com.quest_tracker.quest_tracker_backend.entities.Skill;
-import com.quest_tracker.quest_tracker_backend.entities.Story;
 import com.quest_tracker.quest_tracker_backend.repositories.SkillRepository;
 import com.quest_tracker.quest_tracker_backend.transactional_services.SkillTransactionalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,19 @@ public class SkillService extends GenericService<Skill> implements SkillTransact
         skill.setLevel(1L);
         skill.setExperience(0L);
         return repository.save(skill);
+    }
+
+    @Transactional
+    public Double findLevelPercentage(Long id) throws Exception {
+        var opt = repository.findById(id);
+        Skill skill = opt.get();
+        Double currentLevelExperience = 0.0;
+        if (skill.getLevel() == 1L) {
+            currentLevelExperience = Double.valueOf(skill.getExperience());
+        } else {
+            currentLevelExperience = Double.valueOf(skill.getExperience() - 1000 * skill.getLevel());
+        }
+        return (currentLevelExperience/(1000 * skill.getLevel())) * 100;
     }
 
     @Transactional
