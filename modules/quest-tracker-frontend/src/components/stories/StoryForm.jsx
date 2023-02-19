@@ -1,4 +1,5 @@
-import BigButton from "../common/buttons/BigButton";
+import FormButtons from "../common/forms/FormButtons";
+import ColorSelector from "../common/forms/ColorSelector";
 import "../../assets/styles/customStyles.css";
 
 function StoryForm({
@@ -52,36 +53,13 @@ function StoryForm({
             </p>
           )}
         </div>
-        <div className="flex gap-2 items-center">
-          <label>Color para identificarla:</label>
-          <input
-            type="color"
-            className="cursor-pointer bg-transparent color-selector"
-            onChange={handleColorChange}
-          />
-        </div>
-        <p className="font-semibold" style={{ color: story.colorCode }}>
-          Vista previa de color
-        </p>
-        {colorAlertShown && (
-          <p className="text-red-500">
-            Advertencia: el color blanco no se va a visualizar correctamente con
-            el fondo blanco de la aplicación. Elige un color más oscuro.
-          </p>
-        )}
+        <ColorSelector
+          entity={story}
+          handleColorChange={handleColorChange}
+          colorAlertShown={colorAlertShown}
+        />
       </form>
-      <div className="flex gap-3 justify-end">
-        <BigButton
-          text="Cancelar"
-          bgColor="bg-red-500 hover:bg-red-600"
-          handleClick={handleCancel}
-        />
-        <BigButton
-          text="Crear"
-          bgColor="bg-emerald-500 hover:bg-emerald-600"
-          handleClick={handleSubmit}
-        />
-      </div>
+      <FormButtons handleCancel={handleCancel} handleSubmit={handleSubmit} />
     </div>
   );
 }

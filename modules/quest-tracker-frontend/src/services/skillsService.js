@@ -20,3 +20,11 @@ export const findLevelPercentage = async (skillId) => {
     console.error(error);
   }
 };
+
+export const createSkill = async (newSkill) => {
+  try {
+    await axios.post(`${environment.backendUrl}/skills`, newSkill);
+  } catch (error) {
+    console.error(error);
+  }
+};

@@ -10,7 +10,7 @@ function SkillsList({ skills, refreshSkills }) {
   }
 
   return (
-    <div className="grid grid-cols-3 mx-5">
+    <div className="grid grid-cols-3 mx-2">
       {skills.map((skill) => (
         <SkillCard key={skill.id} skill={skill} refreshSkills={refreshSkills} />
       ))}
