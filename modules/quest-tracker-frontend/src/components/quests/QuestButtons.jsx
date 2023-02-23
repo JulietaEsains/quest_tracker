@@ -1,4 +1,3 @@
-import React from "react";
 import { Tooltip, Button } from "@material-tailwind/react";
 import ConfirmButton from "../common/buttons/ConfirmButton";
 import DeleteButton from "../common/buttons/DeleteButton";

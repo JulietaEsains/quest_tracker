@@ -1,7 +1,7 @@
-import SkillForm from "./SkillForm";
-import { createSkill } from "../../services/skillsService";
-import "../../assets/styles/customStyles.css";
 import { useState } from "react";
+import { createSkill } from "../../services/skillsService";
+import Modal from "../common/forms/Modal";
+import "../../assets/styles/customStyles.css";
 
 function SkillModal({ handleCancel, refreshSkills }) {
   const [skill, setSkill] = useState({
@@ -48,17 +48,16 @@ function SkillModal({ handleCancel, refreshSkills }) {
   };
 
   return (
-    <div className="modal fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center px-1 z-25">
-      <SkillForm
-        skill={skill}
-        handleNameChange={handleNameChange}
-        handleColorChange={handleColorChange}
-        colorAlertShown={colorAlertShown}
-        handleCancel={handleCancel}
-        invalidName={invalidName}
-        handleSubmit={handleFormSubmit}
-      />
-    </div>
+    <Modal
+      title="Crea una nueva habilidad"
+      skill={skill}
+      handleNameChange={handleNameChange}
+      handleColorChange={handleColorChange}
+      colorAlertShown={colorAlertShown}
+      handleCancel={handleCancel}
+      invalidName={invalidName}
+      handleSubmit={handleFormSubmit}
+    />
   );
 }
 

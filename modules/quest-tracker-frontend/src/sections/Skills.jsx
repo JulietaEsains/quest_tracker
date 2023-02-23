@@ -1,7 +1,8 @@
-import { findAllSkills } from "../services/skillsService";
-import SkillsList from "../components/skills/SkillsList";
 import { useState, useEffect } from "react";
+import { findAllSkills } from "../services/skillsService";
+import SectionTitle from "../components/common/sections/SectionTitle";
 import BigButton from "../components/common/buttons/BigButton";
+import SkillsList from "../components/skills/SkillsList";
 import SkillModal from "../components/skills/SkillModal";
 
 function Skills() {
@@ -20,9 +21,7 @@ function Skills() {
 
   return (
     <div className="w-11/12 section">
-      <h1 className="font-semibold text-4xl my-5 text-center text-gray-900">
-        Habilidades
-      </h1>
+      <SectionTitle title="Habilidades" />
       <div className="flex justify-end mr-5">
         <BigButton
           text="Nueva habilidad"

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { findAllStories } from "../services/storiesService";
+import SectionTitle from "../components/common/sections/SectionTitle";
+import BigButton from "../components/common/buttons/BigButton";
 import StoriesList from "../components/stories/StoriesList";
 import StoryModal from "../components/stories/StoryModal";
-import BigButton from "../components/common/buttons/BigButton";
 
 function Stories() {
   const [stories, setStories] = useState([]);
@@ -20,9 +21,7 @@ function Stories() {
 
   return (
     <div className="w-11/12 section">
-      <h1 className="font-semibold text-4xl my-5 text-center text-gray-900">
-        Historias
-      </h1>
+      <SectionTitle title="Historias" />
       <div className="flex justify-between">
         <p className="ml-5">
           Haz click en una historia para ver su descripción.

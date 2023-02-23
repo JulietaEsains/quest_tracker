@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { findLevelPercentage } from "../../services/userService";
+import PercentageBar from "../common/ui/PercentageBar";
 
 function UserLevel({ user, refreshUser }) {
   const [levelPercentage, setLevelPercentage] = useState(0);
@@ -18,12 +19,11 @@ function UserLevel({ user, refreshUser }) {
   return (
     <div>
       Nivel {user.level}
-      <div className="bg-emerald-200 h-3 rounded-md my-2">
-        <span
-          className="bg-emerald-500 h-3 rounded-md block"
-          style={{ width: `${levelPercentage}%` }}
-        ></span>
-      </div>
+      <PercentageBar
+        colorCode="#10B981"
+        percentage={levelPercentage}
+        customClassName="my-2"
+      />
       <div className="font-normal">
         Faltan
         <span className="text-emerald-500 font-semibold">

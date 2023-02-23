@@ -1,5 +1,5 @@
-import { Tooltip, Button } from "@material-tailwind/react";
 import { useState } from "react";
+import { Tooltip, Button } from "@material-tailwind/react";
 import { updateUser } from "../../services/userService";
 import EditButton from "../common/buttons/EditButton";
 import ConfirmButton from "../common/buttons/ConfirmButton";

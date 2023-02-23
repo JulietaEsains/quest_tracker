@@ -1,7 +1,7 @@
-import { createStory } from "../../services/storiesService";
-import StoryForm from "./StoryForm";
-import "../../assets/styles/customStyles.css";
 import { useState } from "react";
+import { createStory } from "../../services/storiesService";
+import Modal from "../common/forms/Modal";
+import "../../assets/styles/customStyles.css";
 
 function StoryModal({ handleCancel, refreshStories }) {
   const [story, setStory] = useState({
@@ -65,19 +65,18 @@ function StoryModal({ handleCancel, refreshStories }) {
   };
 
   return (
-    <div className="modal fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center px-1 z-25">
-      <StoryForm
-        story={story}
-        handleNameChange={handleNameChange}
-        handleDescriptionChange={handleDescriptionChange}
-        handleColorChange={handleColorChange}
-        colorAlertShown={colorAlertShown}
-        handleCancel={handleCancel}
-        invalidName={invalidName}
-        invalidDescription={invalidDescription}
-        handleSubmit={handleFormSubmit}
-      />
-    </div>
+    <Modal
+      title="Crea una nueva historia"
+      story={story}
+      handleNameChange={handleNameChange}
+      handleDescriptionChange={handleDescriptionChange}
+      handleColorChange={handleColorChange}
+      colorAlertShown={colorAlertShown}
+      handleCancel={handleCancel}
+      invalidName={invalidName}
+      invalidDescription={invalidDescription}
+      handleSubmit={handleFormSubmit}
+    />
   );
 }
 

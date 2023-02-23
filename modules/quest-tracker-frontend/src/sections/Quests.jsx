@@ -4,6 +4,7 @@ import {
   findAllPendingQuests,
   findAllCompletedQuests,
 } from "../services/questsService";
+import SectionTitle from "../components/common/sections/SectionTitle";
 import QuestsList from "../components/quests/QuestsList";
 import "../assets/styles/customStyles.css";
 
@@ -31,9 +32,7 @@ function Quests({ refreshUser }) {
 
   return (
     <div className="w-11/12 section">
-      <h1 className="font-semibold text-4xl my-5 text-center text-gray-900">
-        Misiones
-      </h1>
+      <SectionTitle title="Misiones" />
       <p className="ml-5">Haz click en una misión para ver más detalles.</p>
       <QuestsList
         quests={pendingQuests}

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { findLevelPercentage } from "../../services/skillsService";
+import PercentageBar from "../common/ui/PercentageBar";
 
 function SkillCard({ skill, refreshSkills }) {
   const [levelPercentage, setLevelPercentage] = useState(0);
@@ -24,18 +24,11 @@ function SkillCard({ skill, refreshSkills }) {
         </div>
         <div className="flex items-center justify-between mt-1">
           <span className="font-semibold">Nivel {skill.level}</span>
-          <div
-            className="h-3 rounded-md w-8/12 mt-1"
-            style={{ background: `${skill.colorCode}5f` }}
-          >
-            <span
-              className="h-3 rounded-md block"
-              style={{
-                width: `${levelPercentage}%`,
-                background: skill.colorCode,
-              }}
-            ></span>
-          </div>
+          <PercentageBar
+            colorCode={skill.colorCode}
+            percentage={levelPercentage}
+            customClassName="w-8/12 mt-1"
+          />
           <span className="font-semibold">{skill.experience} XP</span>
         </div>
       </div>

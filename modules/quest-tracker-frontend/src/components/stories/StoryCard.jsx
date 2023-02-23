@@ -1,5 +1,5 @@
-import { deleteStory } from "../../services/storiesService";
 import { useState } from "react";
+import { deleteStory } from "../../services/storiesService";
 import StoryButtons from "./StoryButtons";
 import "../../assets/styles/customStyles.css";
 
